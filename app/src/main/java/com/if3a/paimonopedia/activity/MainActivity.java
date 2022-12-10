@@ -3,12 +3,9 @@ package com.if3a.paimonopedia.activity;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -16,7 +13,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.if3a.paimonopedia.R;
 import com.if3a.paimonopedia.fragment.AboutFragment;
-import com.if3a.paimonopedia.fragment.ArtifactsFragment;
 import com.if3a.paimonopedia.fragment.CharactersFragment;
 import com.if3a.paimonopedia.fragment.WeaponsFragment;
 

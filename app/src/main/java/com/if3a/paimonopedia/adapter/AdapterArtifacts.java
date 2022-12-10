@@ -1,5 +1,6 @@
 package com.if3a.paimonopedia.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,10 @@ import java.util.List;
 
 public class AdapterArtifacts extends RecyclerView.Adapter<AdapterArtifacts.ViewHolder> {
     private List<Artifacts> artifactsList = new ArrayList<>();
+    private Context ctx;
 
-    public AdapterArtifacts(List<Artifacts> artifactsList) {
+    public AdapterArtifacts(Context ctx, List<Artifacts> artifactsList) {
+        this.ctx = ctx;
         this.artifactsList = artifactsList;
     }
 
@@ -34,8 +37,8 @@ public class AdapterArtifacts extends RecyclerView.Adapter<AdapterArtifacts.View
     public void onBindViewHolder(@NonNull AdapterArtifacts.ViewHolder holder, int position) {
         Artifacts art = artifactsList.get(position);
 
-        holder.tvName.setText(art.getName());
-        holder.tvRarity.setText(art.getMax_rarity());
+        holder.tvName.setText(String.valueOf(art.getName()));
+        holder.tvRarity.setText(String.valueOf(art.getMax_rarity()));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
