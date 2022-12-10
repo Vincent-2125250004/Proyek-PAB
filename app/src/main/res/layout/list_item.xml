@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    card_view:cardBackgroundColor="@android:color/transparent"
+    card_view:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@drawable/list_item_shape"
+        android:textAlignment="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="24dp"
+        >
+
+        <ImageView
+            android:id="@+id/icon_chara"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/logopaimonopedia"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+        <TextView
+            android:id="@+id/tv_Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/icon_chara"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginStart="16dp"
+            android:text="Name Character"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/hoyo"
+            />
+        <TextView
+            android:id="@+id/tv_Rarity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/icon_chara"
+            app:layout_constraintTop_toBottomOf="@id/tv_Name"
+            android:layout_marginStart="16dp"
+            android:text="Rarity"
+            android:textSize="8sp"
+            android:textColor="@color/white"
+            android:fontFamily="@font/hoyo"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

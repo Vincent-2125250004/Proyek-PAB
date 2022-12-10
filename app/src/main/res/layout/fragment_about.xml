@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#393E41"
+    >
+
+
+
+    <ImageView
+        android:id="@+id/LogoPaimon"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/logopaimonopedia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/Aboutus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="26dp"
+        android:fontFamily="@font/hoyo"
+        android:text="About Us"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/LogoPaimon" />
+
+    <TextView
+        android:id="@+id/Desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/hoyo"
+        android:justificationMode="inter_word"
+        android:text="Paimonopedia adalah Sebuah app untuk mengetahui detail character genshin, weapon serta artifacts yang ada terdapat dalam game sehingga
+dapat memudahkan penggunanya dalam mengetahui info character, weapon, dan arifacts"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Aboutus"
+
+        />
+
+    <TextView
+        android:id="@+id/ourteam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/hoyo"
+        android:text="Our Team"
+        android:textColor="@color/white"
+        android:textSize="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Desc" />
+    <!--Photo Vincent-->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/PhotoVincent"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/vincent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ourteam" />
+    <!--Photo Hansel-->
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/PhotoHansel"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:src="@drawable/hansel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ourteam" />
+
+    <!--Start Vincent-->
+    <TextView
+        android:id="@+id/NamaVincent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/hoyo"
+        android:text="Vincent \n2125250004"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="11dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/PhotoVincent" />
+
+    <TextView
+        android:id="@+id/EmailVincent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/hoyo"
+        android:text="vincent.cent@mhs.mdp.ac.id"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/NamaVincent" />
+
+    <TextView
+        android:id="@+id/InstaVincent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="5dp"
+        android:drawableStart="@drawable/instagram"
+        android:drawablePadding="5dp"
+        android:fontFamily="@font/hoyo"
+        android:text="cent.vi"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/EmailVincent" />
+    <!--    End Vincent-->
+    <!--    Start Hansel-->
+    <TextView
+        android:id="@+id/NamaHansel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:fontFamily="@font/hoyo"
+        android:text="Vincentius Hansel \nIrsansaputra \n2125250003"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/PhotoHansel" />
+
+    <TextView
+        android:id="@+id/EmailHansel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/hoyo"
+        android:text="hansel.irsansaputra@mhs.mdp.ac.id"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/NamaHansel" />
+
+    <TextView
+        android:id="@+id/InstaHansel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="30dp"
+        android:drawableStart="@drawable/instagram"
+        android:drawablePadding="5dp"
+        android:fontFamily="@font/hoyo"
+        android:text="hansel._.irsansaputra"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="11dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/EmailHansel" />
+    <!--End Of Hansel-->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

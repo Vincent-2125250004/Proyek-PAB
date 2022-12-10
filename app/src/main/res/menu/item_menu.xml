@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navChara"
+        android:title="Character"
+        android:icon="@drawable/iconchara"
+        />
+
+    <item
+        android:id="@+id/navWeapons"
+        android:title="Weapons"
+        android:icon="@drawable/iconweapons"
+        />
+
+    <item
+        android:id="@+id/navArtifact"
+        android:title="Artifacts"
+        android:icon="@drawable/iconartifact"
+        />
+
+</menu>
