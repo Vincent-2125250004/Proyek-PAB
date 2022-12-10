@@ -2,13 +2,29 @@ package com.if3a.paimonopedia.fragment;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.if3a.paimonopedia.R;
+import com.if3a.paimonopedia.adapter.AdapterArtifacts;
+import com.if3a.paimonopedia.api.APIRequestData;
+import com.if3a.paimonopedia.api.RetroServer;
+import com.if3a.paimonopedia.models.Artifacts;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +32,12 @@ import com.if3a.paimonopedia.R;
  * create an instance of this fragment.
  */
 public class Artifacts_Fragment extends Fragment {
+
+    private RecyclerView rvArtifacts;
+    private ProgressBar pbArtifacts;
+    private RecyclerView.Adapter AdapArtifacts;
+    private  RecyclerView.LayoutManager LMArtifacts;
+    private List<Artifacts> listArtifacts = new ArrayList<>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,5 +84,38 @@ public class Artifacts_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_artifacts_, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        rvArtifacts = view.findViewById(R.id.rv_artifacts);
+        pbArtifacts = view.findViewById(R.id.pbArtifacts);
+
+        LMArtifacts = new LinearLayoutManager(getView().getContext(),LinearLayoutManager.VERTICAL, false);
+        rvArtifacts.setLayoutManager(LMArtifacts);
+    }
+
+    public void retrieveArtifacts (){
+        pbArtifacts.setVisibility(View.VISIBLE);
+
+        APIRequestData ardData = RetroServer.getRetrofit().create(APIRequestData.class);
+        Call<List<Artifacts>> process = ardData.getArtifacts();
+
+        process.enqueue(new Callback<List<Artifacts>>() {
+            @Override
+            public void onResponse(Call<List<Artifacts>> call, Response<List<Artifacts>> response) {
+                listArtifacts = response.body();
+                AdapArtifacts = new AdapterArtifacts(getView().getContext(),listArtifacts);
+                rvArtifacts.setAdapter(AdapArtifacts);
+                pbArtifacts.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onFailure(Call<List<Artifacts>> call, Throwable t) {
+
+            }
+        });
     }
 }

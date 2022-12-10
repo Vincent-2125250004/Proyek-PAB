@@ -13,6 +13,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.if3a.paimonopedia.R;
 import com.if3a.paimonopedia.fragment.AboutFragment;
+import com.if3a.paimonopedia.fragment.Artifacts_Fragment;
 import com.if3a.paimonopedia.fragment.CharactersFragment;
 import com.if3a.paimonopedia.fragment.WeaponsFragment;
 
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.navArtifact:
-                        bukafragment(new ArtifactsFragment());
+                        bukafragment(new Artifacts_Fragment());
                         return true;
                 }
                 return false;
