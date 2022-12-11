@@ -10,12 +10,12 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface APIRequestData {
-    @GET("characters/")
+    @GET("characters")
     Call<List<Characters>> getCharacters();
 
-    @GET("artifacts/")
+    @GET("artifacts")
     Call<List<Artifacts>> getArtifacts();
 
-    @GET("weapons/")
+    @GET("weapons")
     Call<List<Weapons>> getWeapons();
 }

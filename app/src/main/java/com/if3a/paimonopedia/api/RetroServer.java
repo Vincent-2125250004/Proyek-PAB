@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetroServer {
 
-    private static final String BASE_URL ="https://api.genshin.dev/";
+    private static final String BASE_URL ="https://impact.moe/api/";
 
     public static Retrofit retrofit;
 

@@ -35,10 +35,7 @@ public class CharactersFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private RecyclerView rvCharacters;
-    private List<Characters> listCharacters;
-    private AdapterCharacters adapterCharacters;
-    private LinearLayoutManager linearLayoutManager;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -79,32 +76,11 @@ public class CharactersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        rvCharacters = getView().findViewById(R.id.rv_Characters);
 
-        linearLayoutManager = new LinearLayoutManager(getActivity());
-
-        rvCharacters.setLayoutManager(linearLayoutManager);
-
-        retrieveChara();
     }
 
     private void retrieveChara() {
-        APIRequestData ardData = RetroServer.getRetrofit().create(APIRequestData.class);
 
-        Call<List<Characters>> retrieveProcess = ardData.getCharacters();
-        retrieveProcess.enqueue(new Callback<List<Characters>>() {
-            @Override
-            public void onResponse(Call<List<Characters>> call, Response<List<Characters>> response) {
-                listCharacters =response.body();
-                adapterCharacters = new AdapterCharacters(listCharacters);
-                rvCharacters.setAdapter(adapterCharacters);
-            }
-
-            @Override
-            public void onFailure(Call<List<Characters>> call, Throwable t) {
-
-            }
-        });
     }
 
     @Override

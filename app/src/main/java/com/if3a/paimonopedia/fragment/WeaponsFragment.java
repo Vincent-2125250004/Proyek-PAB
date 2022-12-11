@@ -35,10 +35,7 @@ public class WeaponsFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    private RecyclerView rvWeapons;
-    private List<Weapons> listWeapons;
-    private AdapterWeapons adapterWeapons;
-    private LinearLayoutManager linearLayoutManager;
+
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -79,32 +76,11 @@ public class WeaponsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        rvWeapons = getView().findViewById(R.id.rv_Weapons);
 
-        linearLayoutManager = new LinearLayoutManager(getActivity());
-
-        rvWeapons.setLayoutManager(linearLayoutManager);
-
-        retrieveWeap();
     }
 
     private void retrieveWeap() {
-        APIRequestData ardData = RetroServer.getRetrofit().create(APIRequestData.class);
-        Call<List<Weapons>> retrieveProcess = ardData.getWeapons();
-        retrieveProcess.enqueue(new Callback<List<Weapons>>() {
-            @Override
-            public void onResponse(Call<List<Weapons>> call, Response<List<Weapons>> response) {
-                listWeapons =response.body();
-                adapterWeapons = new AdapterWeapons(listWeapons);
-                rvWeapons.setAdapter(adapterWeapons);
             }
-
-            @Override
-            public void onFailure(Call<List<Weapons>> call, Throwable t) {
-
-            }
-        });
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
