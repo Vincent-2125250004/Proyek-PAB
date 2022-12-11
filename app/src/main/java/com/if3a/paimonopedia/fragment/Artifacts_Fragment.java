@@ -118,4 +118,10 @@ public class Artifacts_Fragment extends Fragment {
             }
         });
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        retrieveArtifacts();
+    }
 }

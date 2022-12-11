@@ -13,11 +13,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.if3a.paimonopedia.R;
 import com.if3a.paimonopedia.models.Artifacts;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterArtifacts extends RecyclerView.Adapter<AdapterArtifacts.ViewHolder> {
-    private List<Artifacts> artifactsList = new ArrayList<>();
+public class AdapterArtifacts extends RecyclerView.Adapter<AdapterArtifacts.HolderData> {
+    private List<Artifacts> artifactsList;
     private Context ctx;
 
     public AdapterArtifacts(Context ctx, List<Artifacts> artifactsList) {
@@ -27,14 +26,14 @@ public class AdapterArtifacts extends RecyclerView.Adapter<AdapterArtifacts.View
 
     @NonNull
     @Override
-    public AdapterArtifacts.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public HolderData onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View layout = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_artifacts, parent, false);
-        ViewHolder holder = new ViewHolder(layout);
+        HolderData holder = new HolderData(layout);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterArtifacts.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull HolderData holder, int position) {
         Artifacts art = artifactsList.get(position);
 
         holder.tvName.setText(String.valueOf(art.getName()));
@@ -53,10 +52,10 @@ public class AdapterArtifacts extends RecyclerView.Adapter<AdapterArtifacts.View
         return artifactsList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class HolderData extends RecyclerView.ViewHolder {
         private TextView tvName, tvRarity;
 
-        public ViewHolder(@NonNull View itemView) {
+        public HolderData(@NonNull View itemView) {
             super(itemView);
 
             tvName = itemView.findViewById(R.id.tv_name);
