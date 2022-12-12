@@ -5,6 +5,6 @@
         android:title=""
         android:id="@+id/menu_about"
         android:icon="@drawable/about2"
-
         />
+
 </menu>
