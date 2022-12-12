@@ -3,6 +3,7 @@ package com.if3a.paimonopedia.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,11 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.if3a.paimonopedia.R;
 import com.if3a.paimonopedia.models.Artifacts;
 import com.if3a.paimonopedia.models.Weapons;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterWeapons extends RecyclerView.Adapter<AdapterWeapons.ViewHolder> {
+
     private List<Weapons> weaponsList = new ArrayList<>();
 
     public AdapterWeapons(List<Weapons> weaponsList) {
@@ -33,15 +36,22 @@ public class AdapterWeapons extends RecyclerView.Adapter<AdapterWeapons.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull AdapterWeapons.ViewHolder holder, int position) {
-        Weapons weap = weaponsList.get(position);
+        Weapons wp = weaponsList.get(position);
 
-        holder.tvName.setText(weap.getName());
-        holder.tvRarity.setText(weap.getRarity());
+        holder.tvname.setText(wp.getName());
+        holder.tvRarity.setText(String.valueOf(wp.getRarity()));
+
+        if (wp.getImage().isEmpty()) {
+            holder.iconWeapons.setImageResource(R.drawable.logopaimonopedia);
+        }
+        else {
+            Picasso.get().load(wp.getImage()).into(holder.iconWeapons);
+        }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(holder.itemView.getContext(), "Name : " + weap.getName(), Toast.LENGTH_SHORT).show();
+
             }
         });
     }
@@ -52,13 +62,15 @@ public class AdapterWeapons extends RecyclerView.Adapter<AdapterWeapons.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvName, tvRarity;
+        private TextView tvname, tvRarity;
+        private ImageView iconWeapons;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            tvName = itemView.findViewById(R.id.tv_Name);
+            tvname =itemView.findViewById(R.id.tv_name);
             tvRarity = itemView.findViewById(R.id.tv_Rarity);
+            iconWeapons = itemView.findViewById(R.id.icon_weapons);
+
         }
     }
 }

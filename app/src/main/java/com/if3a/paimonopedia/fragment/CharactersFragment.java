@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.if3a.paimonopedia.R;
 import com.if3a.paimonopedia.adapter.AdapterCharacters;
@@ -18,6 +20,7 @@ import com.if3a.paimonopedia.api.APIRequestData;
 import com.if3a.paimonopedia.api.RetroServer;
 import com.if3a.paimonopedia.models.Characters;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -30,6 +33,11 @@ import retrofit2.Response;
  * create an instance of this fragment.
  */
 public class CharactersFragment extends Fragment {
+
+    private RecyclerView rvChara;
+    private RecyclerView.Adapter adChara;
+    private RecyclerView.LayoutManager lmChara;
+    private List<Characters> listChara = new ArrayList<>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,11 +84,35 @@ public class CharactersFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        rvChara = view.findViewById(R.id.rv_Characters);
 
+        lmChara = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL, false);
+        rvChara.setLayoutManager(lmChara);
     }
 
     private void retrieveChara() {
+        APIRequestData API = RetroServer.getRetrofit().create(APIRequestData.class);
+        Call<List<Characters>> proses = API.getCharacters();
 
+        proses.enqueue(new Callback<List<Characters>>() {
+            @Override
+            public void onResponse(Call<List<Characters>> call, Response<List<Characters>> response) {
+
+                listChara = response.body();
+
+//                Toast.makeText(getView().getContext(), "Response : " + listChara, Toast.LENGTH_SHORT).show();
+
+                adChara = new AdapterCharacters(listChara);
+                rvChara.setAdapter(adChara);
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Characters>> call, Throwable t) {
+                Toast.makeText(getView().getContext(), "Gagal menghubungi server : " + t.getMessage(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -88,5 +120,11 @@ public class CharactersFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_characters, container, false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        retrieveChara();
     }
 }

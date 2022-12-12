@@ -7,27 +7,28 @@
     tools:context=".fragment.CharactersFragment"
     >
 
-
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bgsemua" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/bgsemua" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:itemCount="100"
+            tools:itemCount="5"
             tools:listitem="@layout/list_item"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="165dp"
+            app:cardBackgroundColor="@android:color/transparent"
             android:id="@+id/rv_Characters"
             />
         <ImageView

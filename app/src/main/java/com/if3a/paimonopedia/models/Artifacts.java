@@ -1,14 +1,18 @@
 package com.if3a.paimonopedia.models;
 
 public class Artifacts {
-    private String name;
-    private Integer max_rarity;
+    private String name, image;
+    private int rarity;
 
     public String getName() {
         return name;
     }
 
-    public Integer getMax_rarity() {
-        return max_rarity;
+    public int getRarity() {
+        return rarity;
+    }
+
+    public String getImage() {
+        return image;
     }
 }

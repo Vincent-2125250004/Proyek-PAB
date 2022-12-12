@@ -3,15 +3,15 @@ package com.if3a.paimonopedia.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.if3a.paimonopedia.R;
-import com.if3a.paimonopedia.models.Artifacts;
 import com.if3a.paimonopedia.models.Characters;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +36,14 @@ public class AdapterCharacters extends RecyclerView.Adapter<AdapterCharacters.Vi
         Characters chara = charactersList.get(position);
 
         holder.tvname.setText(chara.getName());
-        holder.tvrarity.setText(chara.getRarity());
+        holder.tvrarity.setText(String.valueOf(chara.getRarity()));
 
+        if (chara.getIcon().isEmpty()) {
+            holder.iconchara.setImageResource(R.drawable.logopaimonopedia);
+        }
+        else {
+            Picasso.get().load(chara.getIcon()).into(holder.iconchara);
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,11 +60,13 @@ public class AdapterCharacters extends RecyclerView.Adapter<AdapterCharacters.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private  TextView tvname, tvrarity;
+        private ImageView iconchara;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvname = itemView.findViewById(R.id.tv_Name);
+            tvname = itemView.findViewById(R.id.tv_name);
             tvrarity = itemView.findViewById(R.id.tv_Rarity);
+            iconchara = itemView.findViewById(R.id.icon_chara);
         }
     }
 }

@@ -7,8 +7,6 @@
     tools:context=".fragment.WeaponsFragment"
     >
 
-
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -23,7 +21,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:itemCount="10"
+            tools:itemCount="5"
             tools:listitem="@layout/list_item_weapons"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -41,7 +39,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/iconWeapons"
+            android:id="@+id/icon_weapons"
             android:layout_width="66dp"
             android:layout_height="66dp"
             android:layout_marginTop="40dp"
@@ -71,7 +69,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iconWeapons" />
+            app:layout_constraintTop_toBottomOf="@id/icon_weapons" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,11 +13,14 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.if3a.paimonopedia.R;
+import com.if3a.paimonopedia.adapter.AdapterCharacters;
 import com.if3a.paimonopedia.adapter.AdapterWeapons;
 import com.if3a.paimonopedia.api.APIRequestData;
 import com.if3a.paimonopedia.api.RetroServer;
+import com.if3a.paimonopedia.models.Characters;
 import com.if3a.paimonopedia.models.Weapons;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -30,6 +33,11 @@ import retrofit2.Response;
  * create an instance of this fragment.
  */
 public class WeaponsFragment extends Fragment {
+
+    private RecyclerView rvWeapons;
+    private RecyclerView.Adapter adapterWeapons;
+    private RecyclerView.LayoutManager LMWeapons;
+    private List<Weapons> weaponsList = new ArrayList<>();
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,16 +84,43 @@ public class WeaponsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        rvWeapons = view.findViewById(R.id.rv_Weapons);
+        LMWeapons = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL,false);
+        rvWeapons.setLayoutManager(LMWeapons);
 
     }
 
-    private void retrieveWeap() {
+    public void retrieveWeapons (){
+        APIRequestData API = RetroServer.getRetrofit().create(APIRequestData.class);
+        Call<List<Weapons>> proses = API.getWeapons();
+
+        proses.enqueue(new Callback<List<Weapons>>() {
+            @Override
+            public void onResponse(Call<List<Weapons>> call, Response<List<Weapons>> response) {
+                weaponsList = response.body();
+                adapterWeapons = new AdapterWeapons(weaponsList);
+                rvWeapons.setAdapter(adapterWeapons);
             }
+
+            @Override
+            public void onFailure(Call<List<Weapons>> call, Throwable t) {
+
+            }
+        });
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_weapons, container, false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        retrieveWeapons();
     }
 }

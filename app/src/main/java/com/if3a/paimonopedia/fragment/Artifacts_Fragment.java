@@ -25,6 +25,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +33,11 @@ import retrofit2.Response;
  * create an instance of this fragment.
  */
 public class Artifacts_Fragment extends Fragment {
+
+    private RecyclerView rvArtifacts;
+    private RecyclerView.Adapter adapterArtifacts;
+    private RecyclerView.LayoutManager LMArtifacts;
+    private List<Artifacts> artifactsList = new ArrayList<>();
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -75,8 +81,7 @@ public class Artifacts_Fragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_artifacts_, container, false);
     }
@@ -85,12 +90,35 @@ public class Artifacts_Fragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        rvArtifacts = view.findViewById(R.id.rv_artifacts);
+        LMArtifacts = new LinearLayoutManager(getView().getContext(), LinearLayoutManager.VERTICAL, false);
+        rvArtifacts.setLayoutManager(LMArtifacts);
+
 
     }
+    private void retrieveArtifacts (){
+        APIRequestData API = RetroServer.getRetrofit().create(APIRequestData.class);
+        Call<List<Artifacts>> proses = API.getArtifacts();
 
-    public void retrieveArtifacts (){
+        proses.enqueue(new Callback<List<Artifacts>>() {
+            @Override
+            public void onResponse(Call<List<Artifacts>> call, Response<List<Artifacts>> response) {
+                artifactsList = response.body();
+                adapterArtifacts = new AdapterArtifacts(artifactsList);
+                rvArtifacts.setAdapter(adapterArtifacts);
 
+            }
+
+            @Override
+            public void onFailure(Call<List<Artifacts>> call, Throwable t) {
+
+            }
+        });
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        retrieveArtifacts();
+    }
 }
