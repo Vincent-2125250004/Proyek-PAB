@@ -1,5 +1,6 @@
 package com.if3a.paimonopedia.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.if3a.paimonopedia.R;
+import com.if3a.paimonopedia.activity_detail.Detail_Artifacts;
 import com.if3a.paimonopedia.models.Artifacts;
 import com.squareup.picasso.Picasso;
 
@@ -18,6 +20,7 @@ import java.util.List;
 
 public class AdapterArtifacts extends RecyclerView.Adapter<AdapterArtifacts.ViewHolder> {
     private List<Artifacts> artifactsList = new ArrayList<>();
+
 
     public AdapterArtifacts(List<Artifacts> artifactsList) {
         this.artifactsList = artifactsList;
@@ -44,6 +47,23 @@ public class AdapterArtifacts extends RecyclerView.Adapter<AdapterArtifacts.View
         else {
             Picasso.get().load(art.getImage()).into(holder.iconArtifacts);
         }
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(holder.itemView.getContext(), Detail_Artifacts.class);
+                intent.putExtra("varName", art.getName());
+                intent.putExtra("varMaxRarity", String.valueOf(art.getArtifactsSets().getMaxRarity()));
+                intent.putExtra("varType",art.getType());
+                intent.putExtra("vartwopieces", art.getArtifactsSets().getTwoPieceBonus());
+                intent.putExtra("varfourpieces", art.getArtifactsSets().getFourPieceBonus());
+                intent.putExtra("varLore", art.getLore());
+                intent.putExtra("varDesc", art.getDescription());
+                intent.putExtra("varLocation", art.getLocation());
+                intent.putExtra("varImageArtifacts", art.getImage());
+                holder.itemView.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override

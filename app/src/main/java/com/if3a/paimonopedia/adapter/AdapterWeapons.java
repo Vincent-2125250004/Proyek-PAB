@@ -1,17 +1,19 @@
 package com.if3a.paimonopedia.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.if3a.paimonopedia.R;
-import com.if3a.paimonopedia.models.Artifacts;
+import com.if3a.paimonopedia.activity_detail.Detail_Weapons;
 import com.if3a.paimonopedia.models.Weapons;
 import com.squareup.picasso.Picasso;
 
@@ -38,22 +40,35 @@ public class AdapterWeapons extends RecyclerView.Adapter<AdapterWeapons.ViewHold
     public void onBindViewHolder(@NonNull AdapterWeapons.ViewHolder holder, int position) {
         Weapons wp = weaponsList.get(position);
 
-        holder.tvname.setText(wp.getName());
+        holder.tvName.setText(wp.getName());
         holder.tvRarity.setText(String.valueOf(wp.getRarity()));
 
-        if (wp.getImage().isEmpty()) {
-            holder.iconWeapons.setImageResource(R.drawable.logopaimonopedia);
+
+        if (wp.getImage().isEmpty()){
+            holder.ImageWeapons.setImageResource(R.drawable.logopaimonopedia);
         }
         else {
-            Picasso.get().load(wp.getImage()).into(holder.iconWeapons);
+            Picasso.get().load(wp.getImage()).into(holder.ImageWeapons);
         }
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent =new Intent(holder.itemView.getContext(), Detail_Weapons.class);
 
+                intent.putExtra("varName", wp.getName());
+                intent.putExtra("varRarity", String.valueOf(wp.getRarity()));
+                intent.putExtra("varType", wp.getType());
+                intent.putExtra("varbaseAtk", String.valueOf(wp.getBaseAtk()));
+                intent.putExtra("varSubstat", String.valueOf(wp.getSubStat()));
+                intent.putExtra("varAbillity", wp.getAbilityName());
+                intent.putExtra("varAbillityDesc", wp.getAbilityDescription());
+                intent.putExtra("varImageWeapons", wp.getImage());
+                intent.putExtra("varLocation", wp.getLocation());
+                holder.itemView.getContext().startActivity(intent);
             }
         });
+
     }
 
     @Override
@@ -62,15 +77,16 @@ public class AdapterWeapons extends RecyclerView.Adapter<AdapterWeapons.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView tvname, tvRarity;
-        private ImageView iconWeapons;
-
+        private TextView tvRarity, tvName;
+        private ImageView ImageWeapons;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvname =itemView.findViewById(R.id.tv_name);
+
+            tvName = itemView.findViewById(R.id.tv_name);
             tvRarity = itemView.findViewById(R.id.tv_Rarity);
-            iconWeapons = itemView.findViewById(R.id.icon_weapons);
+            ImageWeapons = itemView.findViewById(R.id.icon_weapons);
 
         }
     }
+
 }

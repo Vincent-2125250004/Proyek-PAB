@@ -1,5 +1,6 @@
 package com.if3a.paimonopedia.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.if3a.paimonopedia.R;
+import com.if3a.paimonopedia.activity_detail.Detail_Artifacts;
+import com.if3a.paimonopedia.activity_detail.Detail_Characters;
 import com.if3a.paimonopedia.models.Characters;
 import com.squareup.picasso.Picasso;
 
@@ -31,6 +34,7 @@ public class AdapterCharacters extends RecyclerView.Adapter<AdapterCharacters.Vi
         return holder;
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull AdapterCharacters.ViewHolder holder, int position) {
         Characters chara = charactersList.get(position);
@@ -47,6 +51,20 @@ public class AdapterCharacters extends RecyclerView.Adapter<AdapterCharacters.Vi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent = new Intent(holder.itemView.getContext(), Detail_Characters.class);
+                intent.putExtra("varName", chara.getName());
+                intent.putExtra("varRarity", String.valueOf(chara.getRarity()));
+                intent.putExtra("varVision" , chara.getElement());
+                intent.putExtra("varIcon", chara.getIcon());
+                intent.putExtra("varTitle", chara.getTitle());
+                intent.putExtra("varWeapon", chara.getWeapon());
+                intent.putExtra("varRegion", chara.getRegion());
+                intent.putExtra("varFaction", chara.getFaction());
+                intent.putExtra("varImage", chara.getImage());
+                intent.putExtra("varCons", chara.getConstellation());
+                intent.putExtra("varBirth", chara.getBirthday());
+                intent.putExtra("varDesc", chara.getDescription());
+                holder.itemView.getContext().startActivity(intent);
 
             }
         });
