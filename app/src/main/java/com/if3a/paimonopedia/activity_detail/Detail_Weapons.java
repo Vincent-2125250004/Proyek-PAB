@@ -1,6 +1,8 @@
 package com.if3a.paimonopedia.activity_detail;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,11 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.if3a.paimonopedia.R;
+import com.if3a.paimonopedia.adapter.AdapterTalents;
+import com.if3a.paimonopedia.models.talents;
 import com.squareup.picasso.Picasso;
 
+import java.util.List;
+
 public class Detail_Weapons extends AppCompatActivity {
-    private TextView tvRarity, tvType, tvName, tvbaseatk, tvSubstat, tvAbillity, tvabillitydesc, tvLocation;
+    private TextView tvRarity, tvType, tvName, tvbaseatk, tvSubstat, tvAbillity, tvabillitydesc, tvLocation, tvlore;
     private ImageView ImageWeapons, MainImageWeapons;
+
 
 
 
@@ -34,6 +41,7 @@ public class Detail_Weapons extends AppCompatActivity {
         tvabillitydesc = findViewById(R.id.tv_abillitydesc);
         ImageWeapons = findViewById(R.id.icon_detail_weapons);
         tvLocation = findViewById(R.id.tv_location);
+        tvlore= findViewById(R.id.tv_lore_weapon);
         MainImageWeapons = findViewById(R.id.ImageWeapons);
 
         tvName.setText(name);
@@ -44,6 +52,7 @@ public class Detail_Weapons extends AppCompatActivity {
         tvAbillity.setText(intent.getStringExtra("varAbillity"));
         tvabillitydesc.setText(intent.getStringExtra("varAbillityDesc"));
         tvLocation.setText(intent.getStringExtra("varLocation"));
+        tvlore.setText(intent.getStringExtra("varLore"));
         if (intent.getStringExtra("varImageWeapons").isEmpty()){
             ImageWeapons.setImageResource(R.drawable.logopaimonopedia);
         }
@@ -57,6 +66,7 @@ public class Detail_Weapons extends AppCompatActivity {
         else {
             Picasso.get().load(intent.getStringExtra("varImageWeapons")).into(MainImageWeapons);
         }
+
 
 
 

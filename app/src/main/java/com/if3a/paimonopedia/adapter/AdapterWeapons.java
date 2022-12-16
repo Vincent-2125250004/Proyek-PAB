@@ -65,6 +65,7 @@ public class AdapterWeapons extends RecyclerView.Adapter<AdapterWeapons.ViewHold
                 intent.putExtra("varAbillityDesc", wp.getAbilityDescription());
                 intent.putExtra("varImageWeapons", wp.getImage());
                 intent.putExtra("varLocation", wp.getLocation());
+                intent.putExtra("varLore", wp.getLore());
                 holder.itemView.getContext().startActivity(intent);
             }
         });

@@ -233,6 +233,32 @@
                 android:layout_marginTop="30dp"
                 />
 
+            <TextView
+                android:id="@+id/judulloreweapon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/judullocation"
+                android:text="Lore :"
+                android:textSize="10sp"
+                android:fontFamily="@font/hoyo"
+                android:textColor="@color/black"
+                android:layout_marginTop="15dp"
+                />
+
+            <TextView
+                android:id="@+id/tv_lore_weapon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/judulloreweapon"
+                android:text="Lore Here"
+                android:textSize="10sp"
+                android:fontFamily="@font/hoyo"
+                android:textColor="@color/black"
+                android:layout_marginTop="15dp"
+                />
+
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"

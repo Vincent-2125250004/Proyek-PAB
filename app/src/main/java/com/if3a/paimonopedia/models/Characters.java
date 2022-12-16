@@ -17,8 +17,11 @@ public class Characters {
     private String description;
     private String element;
     private int rarity;
+    private List<talents> talents;
 
-
+    public List<com.if3a.paimonopedia.models.talents> getTalents() {
+        return talents;
+    }
     public String getElement() {
         return element;
     }

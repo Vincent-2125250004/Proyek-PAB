@@ -1,10 +1,18 @@
 package com.if3a.paimonopedia.models;
 
 public class Weapons {
-    private String name, image, type, abilityName, abilityDescription, location;
+    private String name;
+    private String image;
+    private String type;
+    private String abilityName;
+    private String abilityDescription;
+    private String location;
+    private String lore;
     private int rarity, baseAtk;
     private double subStat;
-
+    public String getLore() {
+        return lore;
+    }
     public int getRarity() {
         return rarity;
     }
