@@ -37,6 +37,7 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/round_corner_navbar"
         app:menu="@menu/item_menu"
+        app:itemIconTint="@color/icon_color_navbar"
         app:itemTextAppearanceActive="@style/BottomNavigationViewTextStyle"
         app:itemTextAppearanceInactive="@style/BottomNavigationViewTextStyle"
         />

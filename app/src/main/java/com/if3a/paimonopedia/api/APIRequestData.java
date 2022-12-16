@@ -14,8 +14,8 @@ public interface APIRequestData {
     @GET("characters")
     Call<List<Characters>> getCharacters();
 
-    @GET("characters")
-    Call<List<talents>> ardTalents(@Query("expand") String talents);
+//    @GET("characters")
+//    Call<List<talents>> ardTalents(@Query("expand") String talents);
 
     @GET("artifacts")
     Call<List<Artifacts>> getArtifacts();
