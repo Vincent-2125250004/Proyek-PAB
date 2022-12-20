@@ -10,18 +10,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.if3a.paimonopedia.R;
-import com.if3a.paimonopedia.models.Characters;
-import com.if3a.paimonopedia.models.talents;
+import com.if3a.paimonopedia.models.Talents;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterTalents extends RecyclerView.Adapter<AdapterTalents.ViewHolder> {
-    public List<Characters> charactersList =new ArrayList<>();
+    public List<Talents> talentsList = new ArrayList<>();
 
-    public AdapterTalents(List<Characters> charactersList) {
-        this.charactersList = charactersList;
+    public AdapterTalents(List<Talents> ListTalents) {
+        this.talentsList = ListTalents;
     }
 
     @NonNull
@@ -34,30 +33,30 @@ public class AdapterTalents extends RecyclerView.Adapter<AdapterTalents.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull AdapterTalents.ViewHolder holder, int position) {
-        Characters chr = charactersList.get(position);
-        holder.tvName.setText(chr.getName());
-        holder.tvtype.setText("1");
-        holder.tvDescription.setText(chr.getDescription());
+        Talents tl = talentsList.get(position);
+        holder.tvName.setText(tl.getName());
+        holder.tvtype.setText(tl.getType());
+        holder.tvDescription.setText(tl.getDescription());
 
-        if (chr.getImage().isEmpty()){
+        if (tl.getImage().isEmpty()){
             holder.ImageTalents.setImageResource(R.drawable.logopaimonopedia);
         }
         else {
-            Picasso.get().load(chr.getImage()).into(holder.ImageTalents);
+            Picasso.get().load(tl.getImage()).into(holder.ImageTalents);
         }
     }
 
     @Override
     public int getItemCount() {
-        return charactersList.size();
+        return talentsList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView tvName, tvtype, tvDescription;
         private ImageView ImageTalents;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
             tvName = itemView.findViewById(R.id.tv_name_talents);
             tvtype = itemView.findViewById(R.id.tv_typetalent);
             tvDescription = itemView.findViewById(R.id.tv_Desc_talents);

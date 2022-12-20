@@ -27,15 +27,17 @@
             android:src="@drawable/logopaimonopedia"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="5dp"
             />
+
         <TextView
             android:id="@+id/tv_name_talents"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/icon_talents"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="5dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="60dp"
             android:text="Name Character"
             android:textSize="16sp"
             android:textColor="@color/white"
@@ -43,11 +45,12 @@
             />
         <TextView
             android:id="@+id/tv_Desc_talents"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/icon_talents"
             app:layout_constraintTop_toBottomOf="@id/tv_name_talents"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="10dp"
             android:text="Description"
             android:textSize="10sp"
             android:textColor="@color/white"
@@ -59,9 +62,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toEndOf="@id/icon_talents"
             app:layout_constraintTop_toBottomOf="@id/tv_Desc_talents"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
             android:text="Type"
-            android:textSize="8sp"
+            android:textSize="12sp"
             android:textColor="@color/white"
             android:fontFamily="@font/hoyo"
             />

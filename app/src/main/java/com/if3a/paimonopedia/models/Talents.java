@@ -1,6 +1,6 @@
 package com.if3a.paimonopedia.models;
 
-public class talents {
+public class Talents {
     private String name, image, description, type;
 
     public String getName() {

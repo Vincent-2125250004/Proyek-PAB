@@ -1,8 +1,6 @@
 package com.if3a.paimonopedia.activity_detail;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,11 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.if3a.paimonopedia.R;
-import com.if3a.paimonopedia.adapter.AdapterTalents;
-import com.if3a.paimonopedia.models.talents;
 import com.squareup.picasso.Picasso;
-
-import java.util.List;
 
 public class Detail_Weapons extends AppCompatActivity {
     private TextView tvRarity, tvType, tvName, tvbaseatk, tvSubstat, tvAbillity, tvabillitydesc, tvLocation, tvlore;

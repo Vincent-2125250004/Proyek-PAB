@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Characters {
-
+    private String id;
     private String name;
     private String icon;
     private String title;
@@ -17,11 +17,16 @@ public class Characters {
     private String description;
     private String element;
     private int rarity;
-    private List<talents> talents;
+    private List<Talents> talents;
 
-    public List<com.if3a.paimonopedia.models.talents> getTalents() {
+    public List<Talents> getTalents() {
         return talents;
     }
+
+    public String getId() {
+        return id;
+    }
+
     public String getElement() {
         return element;
     }

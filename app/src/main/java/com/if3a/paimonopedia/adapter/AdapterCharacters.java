@@ -52,6 +52,7 @@ public class AdapterCharacters extends RecyclerView.Adapter<AdapterCharacters.Vi
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(holder.itemView.getContext(), Detail_Characters.class);
+                intent.putExtra("varId", chara.getId());
                 intent.putExtra("varName", chara.getName());
                 intent.putExtra("varRarity", String.valueOf(chara.getRarity()));
                 intent.putExtra("varVision" , chara.getElement());

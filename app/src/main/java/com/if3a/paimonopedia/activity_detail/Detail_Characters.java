@@ -8,25 +8,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.if3a.paimonopedia.R;
 import com.if3a.paimonopedia.adapter.AdapterTalents;
 import com.if3a.paimonopedia.api.APIRequestData;
 import com.if3a.paimonopedia.api.RetroServer;
-import com.if3a.paimonopedia.models.talents;
+import com.if3a.paimonopedia.models.Characters;
 import com.squareup.picasso.Picasso;
 
-import java.util.List;
-
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Detail_Characters extends AppCompatActivity {
     public TextView tvName, tvelemen, tvRarity, tvTitle, tvWeapon, tvRegion, tvFaction, tvCons, tvBirth, tvDesc;
     private ImageView ImageMain, Icon;
 
     private RecyclerView rvTalents;
-    private List<talents> talentsList;
-    private AdapterTalents adapterTalents;
+    private Characters talentList;
+    private RecyclerView.Adapter adapterTalents;
     private LinearLayoutManager linearLayoutManager;
 
     @Override
@@ -79,15 +80,27 @@ public class Detail_Characters extends AppCompatActivity {
         rvTalents.setLayoutManager(linearLayoutManager);
 
 
-        retrieveTalents("talents");
+
+        retrieveTalents(intent.getStringExtra("varId"));
     }
 
-    private void retrieveTalents (String talent){
+    private void retrieveTalents (String id){
         APIRequestData ardData = RetroServer.getRetrofit().create(APIRequestData.class);
+        Call<Characters> process = ardData.ardTalents(id, "talents");
+        process.enqueue(new Callback<Characters>() {
+            @Override
+            public void onResponse(Call<Characters> call, Response<Characters> response) {
+                talentList = response.body();
+//                Toast.makeText(Detail_Characters.this, "Response" + talentList.getTalents() + "Id" + id, Toast.LENGTH_SHORT).show();
+                adapterTalents = new AdapterTalents(talentList.getTalents());
+                rvTalents.setAdapter(adapterTalents);
+            }
 
+            @Override
+            public void onFailure(Call<Characters> call, Throwable t) {
 
+            }
+        });
 
     }
-
-
 }

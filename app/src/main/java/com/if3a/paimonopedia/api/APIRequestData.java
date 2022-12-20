@@ -8,14 +8,16 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface APIRequestData {
     @GET("characters")
     Call<List<Characters>> getCharacters();
 
-//    @GET("characters")
-//    Call<List<talents>> ardTalents(@Query("expand") String talents);
+    @GET("characters/{id}")
+    Call<Characters> ardTalents(@Path ("id") String id,
+                                @Query("expand") String talents);
 
     @GET("artifacts")
     Call<List<Artifacts>> getArtifacts();

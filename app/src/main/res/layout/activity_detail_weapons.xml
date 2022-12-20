@@ -216,7 +216,7 @@
                 android:textSize="10sp"
                 android:fontFamily="@font/hoyo"
                 android:textColor="@color/black"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 />
 
             <TextView
@@ -230,7 +230,7 @@
                 android:textSize="10sp"
                 android:fontFamily="@font/hoyo"
                 android:textColor="@color/black"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 />
 
             <TextView
@@ -243,7 +243,7 @@
                 android:textSize="10sp"
                 android:fontFamily="@font/hoyo"
                 android:textColor="@color/black"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 />
 
             <TextView
@@ -256,7 +256,7 @@
                 android:textSize="10sp"
                 android:fontFamily="@font/hoyo"
                 android:textColor="@color/black"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="5dp"
                 />
 
             <ImageView
